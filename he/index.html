@@ -1,0 +1,261 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderBoard - Heavens</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .container {
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 600px;
+            height: 100%;
+        }
+
+        .container-stats {
+            display: flex;
+            color: white;
+        }
+
+        .container-top-information {
+            border: 2px solid white;
+            width: 600px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            color: white;
+        }
+
+        .container-chase-driver {
+            padding: 10px;
+            color: white;
+        }
+
+        .fading-grey-title {
+            background: linear-gradient(white, grey);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: white;
+        }
+
+
+        #telaNomes {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 100%;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: rgba(172, 172, 172, 0.8);
+            color: black;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        #listaNomes {
+            column-count: 3; /* Exibe os nomes em 3 colunas, ajuste conforme necessário */
+            column-gap: 20px;
+        }
+
+        .nome {
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button {
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container">
+
+       
+        <div id="container-stats" class="container-stats">
+            <div class="container-top-information">
+                <div class="title-championship">
+                    <h3 class="fading-grey-title">DHB - Round 4 - TSUKUBA</h3>
+                </div>
+
+                <div class="top">
+                    <h1 id="top-text">TOP 32</h1>
+                </div>
+            </div>
+        </div>
+
+        <div id="container-leader-chase" class="container-leader-chase" style="display: flex; flex-direction: column; gap: 10px;">
+
+            <div class="container-chase-driver" style="border: 2px solid white">
+                <div class="lead-driver">
+                    <h2 style="border: 2px solid white; padding: 10px;">Lead Driver</h2>
+                </div>
+
+                <h1 id="lead-driver-name">Shanghai</h1>
+            </div>
+
+            <div class="container-chase-driver" style="border: 2px solid white">
+                <div class="chase-driver">
+                    <h2 style="border: 2px solid white; padding: 10px;">Chase Driver</h2>
+                </div>
+
+                <h1 id="chase-driver-name">Roberto</h1>
+            </div>
+
+        </div>
+
+        <img onclick="trocarDados()" style="padding-top: 10px;" src="imgs/output-onlinepngtools.png" width="30px"
+            alt="">
+
+        <div id="container-items" class="container-items"
+            style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+
+            <form class="form-floating" style="width: 50%; margin: 20px;">
+                <input onchange="informarTop()" type="email" class="form-control" id="floatingInputValue"
+                    placeholder="name@example.com" value="test@example.com">
+                <label for="floatingInputValue">Informar o TOP</label>
+            </form>
+
+        </div>
+
+
+
+    </div>
+
+
+    <button onclick="mostrarNomes()">Selecionar Nomes</button>
+    <div id="telaNomes">
+        <h2>Pesquisar e selecionar dois nomes:</h2>
+        <div class="input-group mb-3" style="width: 20%;">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            <input id="pesquisaNome" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+        <div id="listaNomes">
+            <!-- Insira os 100 nomes manualmente aqui -->
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Razão')">Razão</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Godz')">Godz</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Fck')">Fck</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Next')">Next</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nescau')">Nescau</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Fatalz')">Fatalz</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Pocoyo')">Pocoyo</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('GG')" class="nome" onclick="selecionarNome('Nome2')">GG</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Xavao')" class="nome" onclick="selecionarNome('Nome2')">Xavao</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('bek7')" class="nome" onclick="selecionarNome('Nome2')">Bek7</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('nowaycross')" class="nome" onclick="selecionarNome('Nome2')">nowaycross</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Ye</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <div style="border: 2px solid grey; width: 20%; display: flex; justify-content: center; align-items: center; padding: 5px; border-radius: 20px;" class="nome" onclick="selecionarNome('Nome2')" class="nome" onclick="selecionarNome('Nome2')">Nome2</div>
+            <!-- Adicione mais nomes conforme necessário -->
+        </div>
+        <button onclick="fecharTelaNomes()">Fechar</button>
+    </div>
+
+
+
+    <script>
+        function trocarDados() {
+            var chaseDriver = document.getElementById('chase-driver-name');
+            var leadDriver = document.getElementById('lead-driver-name')
+            var chaseDriverName = document.getElementById('chase-driver-name').textContent;
+            var leadDriverName = document.getElementById('lead-driver-name').textContent;
+
+
+
+            chaseDriver.textContent = leadDriverName;
+            leadDriver.textContent = chaseDriverName;
+
+        }
+
+        function informarTop() {
+            var valorInput = document.getElementById('floatingInputValue').value;
+            var textoTop = document.getElementById('top-text')
+            textoTop.textContent = valorInput
+        }
+
+
+        let nomeSelecionado1 = "";
+        let nomeSelecionado2 = "";
+
+        function mostrarNomes() {
+            document.getElementById('telaNomes').style.display = 'block';
+            document.getElementById('container').style.display = 'none';
+            document.getElementById('pesquisaNome').value = "";
+            filtrarNomes();
+            nomeSelecionado1 = "";
+            nomeSelecionado2 = "";
+        }
+
+        function selecionarNome(nome) {
+            if (!nomeSelecionado1) {
+                nomeSelecionado1 = nome;
+            } else if (!nomeSelecionado2) {
+                nomeSelecionado2 = nome;
+                fecharTelaNomes();
+            }
+        }
+
+        function fecharTelaNomes() {
+            var chaseDriver = document.getElementById('chase-driver-name');
+            var leadDriver = document.getElementById('lead-driver-name')
+
+            leadDriver.textContent = nomeSelecionado2;
+            chaseDriver.textContent = nomeSelecionado1
+
+            document.getElementById('container').style.display = 'block';
+            document.getElementById('telaNomes').style.display = 'none';
+        }
+
+        function filtrarNomes() {
+            const termoPesquisa = document.getElementById('pesquisaNome').value.toLowerCase();
+            const nomes = document.getElementsByClassName('nome');
+
+            for (const nomeElement of nomes) {
+                const nome = nomeElement.innerHTML.toLowerCase();
+                if (nome.includes(termoPesquisa)) {
+                    nomeElement.style.display = 'block';
+                } else {
+                    nomeElement.style.display = 'none';
+                }
+            }
+        }
+
+        // Adicionar um ouvinte de evento para a pesquisa
+        document.getElementById('pesquisaNome').addEventListener('input', filtrarNomes);
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

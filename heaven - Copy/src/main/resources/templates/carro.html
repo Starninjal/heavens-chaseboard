@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .car-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .car-image {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div th:each="veiculo : ${veiculos}" class="container">
+        <form action="/selected/vehicle" method="POST">
+            <div class="car-name" th:text="${veiculo.nomeVeiculo}"></div>
+            <img class="car-image" th:src="${veiculo.imagem}" alt="Carro 1">
+            <div class="nome" style="display: flex; display: flex; flex-direction: row; gap: 40px;">
+                <span>Placa do veículo: </span>
+                <div th:text="${veiculo.nomePlaca}"></div>
+            </div>
+
+            <div class="nome" style="display: flex; display: flex; flex-direction: row; gap: 78px;">
+                <span>Tipo de Vip: </span>
+                <div th:text="${veiculo.tipoVip}"></div>
+            </div>
+
+            <input type="hidden" name="nomeVeiculo" th:value="${veiculo.nomeVeiculo}">
+
+
+
+            <button type="submit" style="margin-top: 40px;">Selecionar</button>
+
+        </form>
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

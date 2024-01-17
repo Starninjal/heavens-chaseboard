@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Painel de Admin</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        .admin-panel {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .news-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .news-card h3 {
+            color: #333;
+        }
+
+        .news-card p {
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-panel">
+        <h2>Adicionar Notícia</h2>
+        <form id="newsForm">
+            <label for="title">Título:</label>
+            <input type="text" id="title" required>
+
+            <label for="content">Conteúdo:</label>
+            <textarea id="content" required></textarea>
+
+            <button type="button" onclick="addNews()">Adicionar Notícia</button>
+        </form>
+
+        <div class="news-container" id="newsContainer">
+            <!-- Notícias serão adicionadas dinamicamente aqui -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        function addNews() {
+            var title = document.getElementById('title').value;
+            var content = document.getElementById('content').value;
+
+            if (title && content) {
+                var newsContainer = document.getElementById('newsContainer');
+
+                var newsCard = document.createElement('div');
+                newsCard.classList.add('news-card');
+
+                var titleElement = document.createElement('h3');
+                titleElement.textContent = title;
+
+                var contentElement = document.createElement('p');
+                contentElement.textContent = content;
+
+                newsCard.appendChild(titleElement);
+                newsCard.appendChild(contentElement);
+
+                newsContainer.appendChild(newsCard);
+
+                // Limpar os campos do formulário após adicionar a notícia
+                document.getElementById('title').value = '';
+                document.getElementById('content').value = '';
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        }
+    </script>
+</body>
+                <input type="hidden" name="tipoVip" value="Prata">
+
+</html>
